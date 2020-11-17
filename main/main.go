@@ -6,7 +6,6 @@ import (
 	"os"
 )
 
-
 func main() {
 	type Student struct {
 		Name string `json:"studentName"`
@@ -14,11 +13,11 @@ func main() {
 	}
 
 	type ColorGroup struct {
-		ID       int
-		Name     string `json:"name"`
-		Colors   [] string
-		note     string
-		Student1 Student
+		ID          int
+		Name        string `json:"name"`
+		Colors      []string
+		note        string
+		Student1    Student
 		StudentList []Student
 	}
 
@@ -28,13 +27,13 @@ func main() {
 	}
 
 	group := ColorGroup{
-		ID:       1,
-		Name:     "Reds",
-		Colors:   [] string{"Crimson", "Red", "Ruby", "Maroon"},
-		Student1: student12,
-		StudentList: [] Student{student12},
+		ID:          1,
+		Name:        "Reds",
+		Colors:      []string{"Crimson", "Red", "Ruby", "Maroon"},
+		Student1:    student12,
+		StudentList: []Student{student12},
 	}
-
+	//Json Marshal：将数据编码成json字符串
 	b, err := json.Marshal(group)
 	if err != nil {
 		fmt.Println("error:", err)
@@ -46,6 +45,7 @@ func main() {
 	group1 := ColorGroup{}
 	group2 := ColorGroup{}
 	group3 := ColorGroup{}
+	//Json Unmarshal：将json字符串解码到相应的数据结构
 	json.Unmarshal([]byte(string(b)), &group2)
 	json.Unmarshal(b, &group1)
 	json.Unmarshal([]byte(""), &group3)
@@ -60,7 +60,5 @@ func main() {
 	fmt.Printf("%v", group2)
 	fmt.Println()
 	fmt.Printf("%v", group3)
-
-
 
 }
