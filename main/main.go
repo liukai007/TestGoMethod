@@ -39,7 +39,7 @@ func main() {
 		fmt.Println("error:", err)
 	}
 	os.Stdout.Write(b)
-	fmt.Println()
+	fmt.Println("bbbbb")
 	fmt.Println(string(b))
 
 	group1 := ColorGroup{}
