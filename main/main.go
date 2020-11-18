@@ -25,6 +25,14 @@ func main() {
 		Name: "liukai",
 		Age:  12,
 	}
+	student1 := Student{
+		Name: "liukai1",
+		Age:  1,
+	}
+	student2 := Student{
+		Name: "liukai2",
+		Age:  2,
+	}
 
 	group := ColorGroup{
 		ID:          1,
@@ -61,4 +69,16 @@ func main() {
 	fmt.Println()
 	fmt.Printf("%v", group3)
 
+	fmt.Println()
+	fmt.Println("bb")
+	fmt.Println("bb")
+	fmt.Println("bb")
+	student123 := []Student{student12, student1, student2}
+	bb, err := json.Marshal(student123)
+	fmt.Println(string(bb))
+	st11 := student123[0]
+	fmt.Println(st11.Age)
+	sss1 := []Student{}
+	json.Unmarshal(bb, &sss1)
+	fmt.Println(sss1[0].Age)
 }
