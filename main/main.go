@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"regexp"
 )
 
 func main() {
@@ -81,4 +82,13 @@ func main() {
 	sss1 := []Student{}
 	json.Unmarshal(bb, &sss1)
 	fmt.Println(sss1[0].Age)
+	str := "880218end"
+	fmt.Println(str)
+	match, _ := regexp.MatchString("\\d{1}", str) //六位连续的数字
+	fmt.Println(match)                            //输出true
+	reg := regexp.MustCompile("\\d{6}")
+	//返回str中第一个匹配reg的字符串
+	data := reg.Find([]byte(str))
+	fmt.Println(string(data)) //880218
+
 }
