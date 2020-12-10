@@ -82,6 +82,13 @@ func main() {
 	sss1 := []Student{}
 	json.Unmarshal(bb, &sss1)
 	fmt.Println(sss1[0].Age)
+	/*
+		https://www.cnblogs.com/mafeng/p/10364787.html
+		正则表达式 的例子
+
+
+	*/
+
 	str := "880218end"
 	fmt.Println(str)
 	match, _ := regexp.MatchString("\\d{1}", str) //六位连续的数字
