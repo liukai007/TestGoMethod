@@ -112,10 +112,17 @@ func main() {
 	matchIp, _ := regexp.MatchString(pattern, ip)
 	fmt.Println(matchIp) //输出true
 	//go语言正则表达式判断是否包含某些字段
-	id := "id=123;dfg"
+	id := "id=123;dfg;id=2333"
 	reg = regexp.MustCompile("id=[\\d]+")
 	MEId := reg.FindString(id)
 	fmt.Println(MEId) //输出id=123
+	MEIds := reg.FindAllString(id, 3)
+	for i := 0; i < len(MEIds); i++ {
+		fmt.Println(i)
+		fmt.Println(i)
+		fmt.Println(i)
+		fmt.Println(MEIds[i]) //输出id=123
+	}
 	// 判断是否是个单词
 	pattern = "^[A-Z]+$|(^[A-Z]?[a-z]+)$"
 	char := "mAfeng"
