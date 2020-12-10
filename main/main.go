@@ -97,5 +97,29 @@ func main() {
 	//返回str中第一个匹配reg的字符串
 	data := reg.Find([]byte(str))
 	fmt.Println(string(data)) //880218
+	//go语言正则表达式判断是否为汉字
+	matchChinese, _ := regexp.Match("[\u4e00-\u9fa5]", []byte("经度"))
+	fmt.Println(matchChinese) //输出true
+	//go语言正则表达式判断是否含有字符（大小写）
+	matchChar, _ := regexp.Match("[a-zA-Z]", []byte("av132"))
+	fmt.Println(matchChar) //输出false
+	//go语言正则表达式判断是否含有以数字开头，不是为true
+	matchDigit, _ := regexp.Match(`[^\d]`, []byte("as132"))
+	fmt.Println(matchDigit) //输出true
+	//go语言正则表达式判断是否含有为IP地址
+	ip := "10.32.12.01"
+	pattern := "[\\d]+\\.[\\d]+\\.[\\d]+\\.[\\d]+"
+	matchIp, _ := regexp.MatchString(pattern, ip)
+	fmt.Println(matchIp) //输出true
+	//go语言正则表达式判断是否包含某些字段
+	id := "id=123;dfg"
+	reg = regexp.MustCompile("id=[\\d]+")
+	MEId := reg.FindString(id)
+	fmt.Println(MEId) //输出id=123
+	// 判断是否是个单词
+	pattern = "^[A-Z]+$|(^[A-Z]?[a-z]+)$"
+	char := "mAfeng"
+	match, _ = regexp.Match(pattern, []byte(char))
+	fmt.Println(match)
 
 }
